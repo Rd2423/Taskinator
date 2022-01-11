@@ -1,6 +1,9 @@
 var taskIdCounter = 0;
+var pageContentEl = document.querySelector("#page-content");
 var formEl = document.querySelector("#task-form");
 var tasksToDoEl = document.querySelector("#tasks-to-do");
+var tasksInProgressEl = document.querySelector('#tasks-in-progress');
+var tasksCompletedEl = document.querySelector('#tasks-completed');
 
 var taskFormHandler = function(event) {
   event.preventDefault();
@@ -48,6 +51,7 @@ var createTaskEl = function (taskDataObj) {
 
   // increase task counter for next unique id
   taskIdCounter++;
+  
 };
 
 var createTaskActions = function(taskId) {
@@ -99,3 +103,16 @@ return actionContainerEl;
 
 
 formEl.addEventListener("submit", taskFormHandler);
+
+var taskButtonHandler = function(event) {
+  console.log(event.target);
+
+  if (event.target.matches(".delete-btn")) {
+    console.log("you clicked a delete button")
+
+  }
+};
+
+pageContentEl.addEventListener("click", taskButtonHandler);
+
+
